@@ -1,3 +1,14 @@
+<a name="5.0.0"></a>
+# [5.0.0](https://github.com/zyra/ionic-image-loader/compare/v4.2.1...v5.0.0) (2018-01-23)
+
+
+### Features
+
+* replace FileTransfer plugin with HttpClient ([#125](https://github.com/zyra/ionic-image-loader/issues/125)) ([45201ce](https://github.com/zyra/ionic-image-loader/commit/45201ce))
+* support saving cached images with extension ([#113](https://github.com/zyra/ionic-image-loader/issues/113)) ([fec6e51](https://github.com/zyra/ionic-image-loader/commit/fec6e51))
+
+
+
 <a name="4.2.1"></a>
 ## [4.2.1](https://github.com/zyra/ionic-image-loader/compare/v4.2.0...v4.2.1) (2017-09-07)
 

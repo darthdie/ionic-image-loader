@@ -3,7 +3,8 @@
 [![npm](https://img.shields.io/npm/dm/ionic-image-loader.svg)](https://www.npmjs.com/package/ionic-image-loader)
 
 # Ionic Image Loader
-**Ionic** Module that loads images in a native background thread and caches them for later use. Uses `cordova-plugin-file` and `cordova-plugin-file-transfer` via [`ionic-native`](https://github.com/driftyco/ionic-native) wrappers.
+**Ionic** Module that loads images in a background thread and caches them for later use. Uses `HttpClient` from `Angular 4+`, and `cordova-plugin-file` via [`ionic-native`](https://github.com/driftyco/ionic-native) wrappers.
+
 
 ## Features
 - Downloads images via a **native thread**. Images will download faster and they will not use the Webview's resources.
@@ -36,9 +37,6 @@ npm install --save ionic-image-loader
 ```
 npm i --save @ionic-native/file
 ionic cordova plugin add cordova-plugin-file
-
-npm i --save @ionic-native/file-transfer
-ionic cordova plugin add cordova-plugin-file-transfer
 ```
 
 #### 3. Import `IonicImageLoader` module
@@ -267,17 +265,32 @@ Example:
 this.imageLoaderConfig.enableFallbackAsPlaceholder(true);
 ```
 ---
-#### setFileTransferOptions(options: any)
-Set options for FileTransfer plugin to use. If you would like to set a value for the `trustAllHosts` param, you can add it to the options object.
+#### setHttpRequestOptions(options: any)
+Set options for HttpClient to use.
 
 Example:
 ```ts
-this.imageLoaderConfig.setFileTransferOptions({
-  trustAllHosts: true, // defaults to false
+this.imageLoaderConfig.setHttpRequestOptions({
   headers: {
     Authorization: 'Basic dGVzdHVzZXJuYW1lOnRlc3RwYXNzd29yZA=='
   }
 });
+```
+---
+#### setFileNameCachedWithExtension(enable: boolean)
+Enable/Disable the save filename of cached images with extension.  Defaults to false.
+
+Example:
+```ts
+this.imageLoaderConfig.setFileNameCachedWithExtension(true);
+```
+---
+#### setFallbackFileNameCachedExtension(extension: string)
+Sometime url missing extension, in this case you can set fallback as default extension. Defaults to '.jpg'
+
+Example:
+```ts
+this.imageLoaderConfig.setFallbackFileNameCachedExtension('.png');
 ```
 ---
 
