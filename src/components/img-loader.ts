@@ -23,8 +23,11 @@ export class ImgLoader implements OnInit {
    */
   @Input()
   set src(imageUrl: string) {
-    this._src = this.processImageUrl(imageUrl);
-    this.updateImage(this._src);
+    let newSrc = this.processImageUrl(imageUrl);
+    if(newSrc !== this._src) {
+      this._src = this.processImageUrl(imageUrl);
+      this.updateImage(this._src);
+    }
   };
 
   get src(): string {
@@ -32,6 +35,12 @@ export class ImgLoader implements OnInit {
   }
 
   private _src: string;
+
+  get localUrl(): string {
+    return this._localUrl;
+  }
+
+  private _localUrl: string;
 
   /**
    * Fallback URL to load when the image url fails to load or does not exist.
@@ -185,6 +194,7 @@ export class ImgLoader implements OnInit {
    */
   private setImage(imageUrl: string, stopLoading: boolean = true): void {
     this.isLoading = !stopLoading;
+    this._localUrl = imageUrl;
 
     if (this._useImg) {
 
